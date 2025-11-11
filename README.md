@@ -17,28 +17,38 @@ Minimizar os custos operacionais da empresa, especialmente o consumo de combust�
 Aumentar a satisfação dos clientes através de entregas mais rápidas e confiáveis.
 Modernizar a gestão de entregas, substituindo a definição manual por um sistema automatizado e inteligente.
 
+
+
 Abordagem Adotada
+
 Para solucionar o problema da "Sabor Express", adotamos uma abordagem em duas fases principais, utilizando a modelagem de grafos para representar a cidade e combinando algoritmos de agrupamento (clustering) com algoritmos de busca de menor caminho
 
 
+
 Modelagem da Cidade como Grafo
+
 A cidade e seus pontos de entrega (restaurante, clientes) são representados como um grafo.
 Nós (Vértices)  Cada local de interesse, como o restaurante da "Sabor Express" e os endereços dos clientes, é um nó no grafo.
 Arestas: As ruas que conectam esses locais são representadas como arestas.
 Pesos das Arestas: Cada aresta possui um peso que representa a distância ou o tempo estimado de percurso entre os nós, simulando as condições de tráfego. Para simplificar, neste projeto, assumimos pesos baseados em distância fixa, mas a abordagem é extensível a dados de tempo em tempo real.
 
+
 Fluxo da Solução
+
 O processo de otimização de rota segue os seguintes passos:
 Geração/Carregamento de Dados: Dados do mapa (nós e arestas) e dos pedidos (localização dos clientes) são carregados ou gerados de forma simulada.
 Agrupamento de Entregas (Clustering): Em situações de alta demanda (horários de pico com muitos pedidos), as localizações dos clientes são agrupadas em clusters (grupos). Cada cluster representa um conjunto de entregas que pode ser atribuído a um único entregador, otimizando a distribuição do trabalho.
 Otimização de Rota por Cluster: Para cada cluster de entregas, é calculado o menor caminho que o entregador deve percorrer, partindo do restaurante, passando por todos os clientes do seu grupo e retornando ao ponto de partida (ou finalizando na última entrega). Isso é uma variação do Problema do Caixeiro Viajante (TSP) para um número reduzido de pontos, resolvido com algoritmos de busca de menor caminho e heurísticas de sequenciamento.
 Sugestão de Rotas Otimizadas: As rotas calculadas são apresentadas como sugestões aos entregadores, indicando a sequência ideal de paradas.
 
+
 Algoritmos Utilizados
+
 K-Means (Aprendizado Não Supervisionado - Clustering)
 Finalidade: O algoritmo K-Means é utilizado para agrupar os pedidos dos clientes em zonas geográficas próximas. Em cenários com múltiplos pedidos e entregadores, é fundamental distribuir o trabalho de forma eficiente. O K-Means ajuda a criar k grupos (onde k é o número de entregadores disponíveis ou o número de grupos desejados), minimizando a distância entre os pontos dentro de cada cluster e maximizando a distância entre os clusters.
 
 Como funciona: Ele seleciona k centroides iniciais aleatoriamente e, iterativamente, atribui cada ponto de dado ao centroide mais próximo, em seguida, recalcula a posição dos centroides como a média dos pontos de cada cluster. O processo se repete até que os centroides não mudem significativamente.
+
 
 A* Search Algorithm (Algoritmo de Busca de Menor Caminho)
 
@@ -65,6 +75,7 @@ A eficiência dos algoritmos utilizados é fundamental. O K-Means tem uma comple
 
 
 Limitações Encontradas
+
 Apesar de robusta, a solução atual possui algumas limitações que podem ser abordadas em futuras iterações:
 Dados Estáticos de Tráfego: A modelagem atual usa pesos de arestas fixos (distância). Isso não considera variações de tráfego em tempo real, obras, acidentes ou condições climáticas que podem alterar os tempos de percurso.
 Problema do Caixeiro Viajante (TSP): Embora o K-Means agrupe os pedidos, a etapa de sequenciamento dos pontos dentro de cada cluster para obter a rota ótima global é um problema de TSP. Para um pequeno número de pontos, heurísticas simples funcionam bem, mas para clusters maiores, a otimização pode não ser globalmente ótima.
@@ -80,6 +91,7 @@ Aprendizado por Reforço (RL): Explorar algoritmos de RL para permitir que o sis
 Consideração de Janelas de Tempo: Implementar restrições de "Time Windows" para atender a requisitos de entrega específicos dos clientes.
 
 Otimização de Múltiplos Depósitos:
+
  Estender a funcionalidade para empresas com mais de um restaurante ou centro de distribuição.
 
 Interface Gráfica para Entregadores e Gestores: Desenvolver uma interface amigável para que os entregadores possam visualizar suas rotas no celular e os gestores possam monitorar o status das entregas.
@@ -90,4 +102,4 @@ Marcella Dias - 93980
 Artificial Intelligence Fundamental
 EAD
 
-https://github.com/marcelladiass/marcellass.git
+
