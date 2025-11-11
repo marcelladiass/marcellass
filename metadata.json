@@ -1,0 +1,5 @@
+{
+  "name": "Rota Inteligente: Otimização de Entregas",
+  "description": "Uma aplicação web que utiliza IA para otimizar rotas de entrega para a empresa 'Sabor Express', agrupando pedidos e encontrando os caminhos mais eficientes para os entregadores.",
+  "requestFramePermissions": []
+}
